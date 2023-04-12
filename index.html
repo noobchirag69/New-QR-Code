@@ -1,72 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>QR Code Generator</title>
+  </head>
 
-    <!-- Manual CSS -->
-    <style>
-        #image-box {
-            display: none;
-        }
-    </style>
-</head>
-
-<body class="container py-5">
+  <body class="container py-5">
     <!-- Heading/Intro -->
     <h1 class="text-center display-4">QR Code Generator</h1>
     <p class="text-center lead">Made by Chirag Chakraborty!</p>
 
     <!-- Form -->
     <form class="container border rounded p-5 mt-5">
-        <!-- Size of QR Code -->
-        <label for="size" class="fw-bold mb-1">Choose the size of your QR Code</label>
-        <select class="form-select mb-3" aria-label="Default select example" id="size">
-            <option value="100x100">100 x 100</option>
-            <option value="200x200">200 x 200</option>
-        </select>
-        <!-- Data of QR Code -->
-        <label for="url" class="fw-bold mb-1">Enter the Text/URL</label>
-        <input class="form-control mb-3" type="text" id="url" placeholder="e.g., https://github.com/noobchirag69"
-            required>
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary" id="btn">Generate QR Code</button>
+      <!-- Size of QR Code -->
+      <label for="size" class="fw-bold mb-1"
+        >Choose the size of your QR Code</label
+      >
+      <select
+        class="form-select mb-3"
+        aria-label="Default select example"
+        id="size"
+      >
+        <option value="100x100">100 x 100</option>
+        <option value="200x200">200 x 200</option>
+      </select>
+      <!-- Data of QR Code -->
+      <label for="url" class="fw-bold mb-1">Enter the Text/URL</label>
+      <input
+        class="form-control mb-3"
+        type="text"
+        id="url"
+        placeholder="e.g., https://github.com/noobchirag69"
+        required
+      />
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" id="btn">
+        Generate QR Code
+      </button>
     </form>
 
     <!-- Display the generated QR Code -->
     <div class="container mt-5 text-center" id="image-box">
-        <h3 class="mb-3">Here is your QR Code:</h3>
-        <!-- the 'src' is blank by default, which will be altered by JavaScript -->
-        <img src="..." alt="QR Code" id="qrCode">
+      <h3 class="mb-3">Here is your QR Code:</h3>
+      <!-- the 'src' is blank by default, which will be altered by JavaScript -->
+      <img src="..." alt="QR Code" id="qrCode" />
     </div>
 
     <!-- Bootstrap JavaScript CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JavaScript Code -->
-    <script>
-        // Necessary Variables
-        let size = document.querySelector('#size'); // Size of the QR
-        let userInput = document.querySelector('#url'); // Data of the QR
-        let btn = document.querySelector('#btn'); // Submit Button
-        let imageBox = document.querySelector('#image-box'); // Image Container
-        let qrCode = document.querySelector('#qrCode'); // QR Code
-
-        // Function to generate QR Code
-        btn.addEventListener('click', (e) => {
-            e.preventDefault(); // To prevent the form submission
-            let apiURL = `https://api.qrserver.com/v1/create-qr-code/?size=${size.value}&data=${userInput.value}`; // QR Code API that takes 2 parameters - size and data
-            qrCode.src = apiURL; // Setting the src of the image
-            imageBox.style.display = 'block'; // Making the image visible
-            size.value = '100x100'; // Setting the size back to default
-            userInput.value = ''; // Setting the data back to empty
-        });
-    </script>
-</body>
-
+    <script src="app.js"></script>
+  </body>
 </html>
